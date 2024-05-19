@@ -1,7 +1,7 @@
 # YourMood
 #### Video Demo: <https://youtu.be/6_KDwwD8SZ8>
 #### Description:
-# Music Player README
+# Music Player 
 
 #### Description
 This is a simple music player program implemented in Python using the Tkinter and Pygame libraries. It allows users to create a playlist of their favorite songs and control playback, volume, and song selection. The program provides a graphical user interface (GUI) where users can interact with various buttons and controls to manage their music collection.

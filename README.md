@@ -4,7 +4,7 @@
 # Music Player 
 
 #### Description
-This is a simple music player program implemented in Python using the Tkinter and Pygame libraries. It allows users to create a playlist of their favorite songs and control playback, volume, and song selection. The program provides a graphical user interface (GUI) where users can interact with various buttons and controls to manage their music collection.
+This is a simple music player program implemented in Python using the Tkinter and Pygame libraries. It allows users to create a playlist of their favourite songs and control playback, volume, and song selection. The program provides a graphical user interface (GUI) where users can interact with various buttons and controls to manage their music collection.
 
 #### Features
 - Add songs to the playlist: Users can add individual songs or select multiple songs at once from their local storage.
@@ -39,4 +39,4 @@ python music_player.py song1.mp3 song2.mp3 song3.mp3
 ```
 
 ## Contributing
-Contributions to this music player program are welcome. If you find any bugs, issues, or have suggestions for enhancements, please feel free to open an issue or submit a pull request.
+I want you to know that contributions to this music player program are welcome. If you find any bugs, or issues, or have suggestions for enhancements, please feel free to open an issue or submit a pull request.

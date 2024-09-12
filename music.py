@@ -1,5 +1,5 @@
 import os, sys
-from tkinter import Tk, Frame, Scale, Label, Button, Listbox, Scrollbar
+from tkinter import Tk, ttK, Frame, Scale, Label, Button, Listbox, Scrollbar
 from tkinter import filedialog, messagebox
 from pygame import mixer
 
@@ -143,43 +143,33 @@ class MusicPlayer:
     def play_song(self):
 
         # Check for paused song
-        if mixer.music.get_busy() == False and mixer.music.get_pos() > 0:
+        if mixer.music.get_busy() and mixer.music.get_pos() > 0:
             mixer.music.unpause()
-            
+            self.progress = ttk.Scale(self.root, from_=0, to=100, orient="horizontal")
+            self.progress.pack(fill="x", padx=10, pady=5)
         else:
-            # Check for the command line argument, and plays the song
-            try:
-                mixer.music.load(sys.argv[1])
-                mixer.music.play()
-                self.volume = mixer.music.get_volume() * 100
-                self.volume_scale.set(self.volume)
-                self.add_song(sys.argv[1])
-
-            # If no command line argument present, select file mannualy
-            except:
-                selected_song = self.playlist_box.curselection()
-                if selected_song:
-                    self.load_song(selected_song[0])
-                    self.current_song_index = selected_song[0]
+            selected_song = self.playlist_box.curselection()
+            if selected_song:
+                self.load_song(selected_song[0])
+                self.current_song_index = selected_song[0]
+            else:
+                messagebox.showinfo("Error", "No song selected!")
 
     # Play previous song
     def previous_song(self):
-        self.current_song_index -= 1
-        if (self.current_song_index < 0):
-            self.current_song_index = len(self.playlist) - 1
-            messagebox.showinfo("Error", "No previous song!")
-        self.load_song(self.current_song_index)
+        if len(self.playlist) == 0:
+            messagebox.showinfo("Error", "Empty playlist!")
+        else:
+            self.current_song_index = (self.current_song_index - 1) % len(self.playlist)
+            self.load_song(self.current_song_index)
         
     # Play next song
     def next_song(self):
-        self.current_song_index += 1
-        if (self.current_song_index > len(self.playlist) - 1):
-            self.current_song_index = 0
-            messagebox.showinfo("Error", "No next song!")
-        try:
-            self.load_song(self.current_song_index + 1)  
-        except IndexError:
-            messagebox.showinfo("Error", "No next song!")
+        if len(self.playlist) == 0:
+            messagebox.showinfo("Error", "Empty playlist!")
+        else:
+            self.current_song_index = (self.current_song_index + 1) % len(self.playlist)
+            self.load_song(self.current_song_index)
     
     # keybord control
     def handle_key(self, event):
